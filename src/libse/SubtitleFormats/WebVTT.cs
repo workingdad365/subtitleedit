@@ -494,7 +494,10 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                         {
                             vAlignTop = true;
                         }
-                        else if (number < 75)
+                        // Multi-line bottom cues can start at e.g. 74% of the viewport.
+                        // Keep the lower third at the default bottom alignment instead of
+                        // moving these cues to the screen center with an ASS alignment tag.
+                        else if (number < 200.0 / 3.0)
                         {
                             vAlignMiddle = true;
                         }
